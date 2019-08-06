@@ -1,0 +1,17 @@
+[Unit]
+Description=NZBGet Daemon
+Documentation=http://nzbget.net/Documentation
+After=network.target
+
+[Service]
+User=cryptkeepr
+Group=cryptkeepr
+Type=forking
+ExecStart=/opt/nzbget/nzbget -D
+ExecStop=/opt/nzbget/nzbget -Q
+ExecReload=/opt/nzbget/nzbget -O
+KillMode=process
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

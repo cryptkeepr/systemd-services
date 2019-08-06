@@ -1,0 +1,20 @@
+# lazylibrarian.service to run as $USER with config in $HOME/.lazylibrarian
+
+[Unit]
+SourcePath=/etc/init.d/lazylibrarian
+Description=LSB: starts instance of LazyLibrarian
+After=all.target
+
+[Service]
+Type=forking
+Restart=no
+TimeoutSec=5min
+IgnoreSIGPIPE=no
+KillMode=process
+GuessMainPID=no
+RemainAfterExit=yes
+ExecStart=/etc/init.d/lazylibrarian start
+ExecStop=/etc/init.d/lazylibrarian stop
+
+[Install]
+WantedBy=multi-user.target
